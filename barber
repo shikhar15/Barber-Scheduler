@@ -1,0 +1,25 @@
+#include<iostream>
+#include<conio.h>
+using namespace std;
+
+main(){
+int chairs=10;
+int customer,barber,c=3,d;
+int barberchair;
+cout<<"\nwelcome to barber shop ,plz choose your option";
+int choice;
+cin>>choice;
+switch(choice){
+		case 1:cout<<"\ngeting inside barber shop";
+		         inside(chairs,barberchair);
+		         
+		 break;    
+		default:cout<<"wrong choice";
+	   }
+cout<<"\npress 1 to continue or 0 to end";
+cin>>d;
+if (d==0)
+    break;
+cout<<"\nthe end";
+}
+

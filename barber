@@ -2,24 +2,60 @@
 #include<conio.h>
 using namespace std;
 
-main(){
-int chairs=10;
-int customer,barber,c=3,d;
-int barberchair;
-cout<<"\nwelcome to barber shop ,plz choose your option";
-int choice;
-cin>>choice;
-switch(choice){
-		case 1:cout<<"\ngeting inside barber shop";
-		         inside(chairs,barberchair);
-		         
-		 break;    
+int main()
+{
+	int chairs=10;
+	int customer,barber,c=3,d;
+	int barberchair=0;
+	while(c>1){
+	cout<<"\n-=-=-=-=-=>Welcome to barber shop ,plz choose your option<=-=-=-=-=-";
+	cout<<"\n1. Get inside shop.";
+	cout<<"\n2. Check barber.";
+	int choice;
+	cin>>choice;
+	switch(choice){
+		case 1:cout<<"\nGeting inside barber shop";
+		         cout<<"\nInside barber shop\n";
+	if(barberchair==0)
+	{
+	cout<<"\nNobody is in the shop";
+	cout<<"\nGoing inside the barber room";	
+	cout<<"\nWakeing the barber up";
+	barberchair++;
+	
+	}
+	
+	else
+	{ if(chairs==0){
+	   	cout<<"\nSorry no more space for any customer ,please come after some time";
+	   }
+	   else{
+	   	cout<<"\nBarber is busy.";
+	    cout<<"\nWaiting in the waiting room.";
+	   	cout<<"\nOccupying seat no "<<chairs;
+	   chairs--;
+	   
+	   }
+    }
+		break;
+		
+		case 2:cout<<"\nChecking barber";
+		        if(barberchair==0){ 
+				cout<<"\nBarber is sleeping";
+	              }
+	
+                else 
+	            cout<<"\nBarber is working";
+		        
+		 break;
+		 
+		 
 		default:cout<<"wrong choice";
 	   }
-cout<<"\npress 1 to continue or 0 to end";
-cin>>d;
-if (d==0)
+    cout<<"\npress 1 to continue or 0 to end :";
+    cin>>d;
+	if (d==0)
     break;
-cout<<"\nthe end";
+	}
+   cout<<"\n>--------THE END---------<";
 }
-

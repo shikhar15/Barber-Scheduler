@@ -1,61 +1,98 @@
 #include<iostream>
 #include<conio.h>
+#include <windows.h>
 using namespace std;
 
 int main()
 {
-	int chairs=10;
+	int chairs=10;               //total chairs in waiting room is 10
 	int customer,barber,c=3,d;
 	int barberchair=0;
 	while(c>1){
-	cout<<"\n-=-=-=-=-=>Welcome to barber shop ,plz choose your option<=-=-=-=-=-";
+	cout<<"\n-=-=-=-=-=>WELCOME TO THE BARBER<=-=-=-=-=-";
+	Sleep(1000);                     //Sleep() to delay process of execution
+	cout<<"\nPlease choose your option.";
+	Sleep(1000);
 	cout<<"\n1. Get inside shop.";
+	Sleep(1000);
 	cout<<"\n2. Check barber.";
+	Sleep(1000);
+	cout<<"\n3. Check for seats.";
+	Sleep(1000);
 	int choice;
 	cin>>choice;
 	switch(choice){
 		case 1:cout<<"\nGeting inside barber shop";
-		         cout<<"\nInside barber shop\n";
-	if(barberchair==0)
+		         Sleep(1000);
+				 cout<<"\nInside barber shop\n";
+				 Sleep(1000);
+	if(barberchair==0)                                          //if barber chair is empty then wake the barber up
 	{
 	cout<<"\nNobody is in the shop";
+	Sleep(1000);
 	cout<<"\nGoing inside the barber room";	
+	Sleep(1000);
 	cout<<"\nWakeing the barber up";
+	Sleep(1000);
 	barberchair++;
 	
 	}
 	
 	else
-	{ if(chairs==0){
+	{ if(chairs==0){                                         //if all the chairs in waiting room are occupied
 	   	cout<<"\nSorry no more space for any customer ,please come after some time";
 	   }
 	   else{
-	   	cout<<"\nBarber is busy.";
-	    cout<<"\nWaiting in the waiting room.";
-	   	cout<<"\nOccupying seat no "<<chairs;
+	   	cout<<"\nBarber is busy.";                       //if barber is busy and waiting room has space to accomodate a customer   
+	    Sleep(1000);
+		cout<<"\nWaiting in the waiting room.";
+	   	Sleep(1000);
+		cout<<"\nWaiting on seat number "<<chairs;
+	   Sleep(1000);
 	   chairs--;
 	   
 	   }
     }
 		break;
 		
-		case 2:cout<<"\nChecking barber";
-		        if(barberchair==0){ 
+		case 2: Sleep(1000);
+		        cout<<"\nChecking barber";              
+		        if(barberchair==0){                      //to check if barber is sleeping
+				Sleep(1000);
 				cout<<"\nBarber is sleeping";
+				Sleep(1000);
 	              }
 	
                 else 
-	            cout<<"\nBarber is working";
-		        
+	            cout<<"\nBarber is working";              //to check if barber is busy
+		        Sleep(1000);
 		 break;
 		 
-		 
+		 case 3:Sleep(1000);
+		        cout<<"\nCheckimg the number of seats left\n";        //
+		        if(barberchair==0){
+		        	Sleep(1000);                                  //to check if barber chair is vacant
+					cout<<"\nBarber room is vacant and waiting room is empty";
+				    Sleep(1000);
+				}
+				else{Sleep(1000);                             //to check no of seats left in waiting room
+				cout<<chairs<< " seats left";
+				Sleep(1000);
+				}
+				
+				break;
+		
+		
 		default:cout<<"wrong choice";
+	   Sleep(1000);
 	   }
-    cout<<"\npress 1 to continue or 0 to end :";
+    Sleep(1000);
+	cout<<"\npress 1 to continue or 0 to end :";
     cin>>d;
 	if (d==0)
     break;
 	}
+   Sleep(1000);
    cout<<"\n>--------THE END---------<";
+   Sleep(1000);
 }

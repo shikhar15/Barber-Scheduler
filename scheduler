@@ -4,39 +4,49 @@ using namespace std;
 
 int main()
 {
-	int maxprocess,temp,j;
-	int process[50];
+	int maxprocess,temp,j,i,pos;
+	int process[50],index[50];
 	cout<<"Enter the total number of process you want to enter :";
 	cin>>maxprocess;
 	for(int i=0;i<maxprocess;i++)
 	{
-		cout<<"Enter execution time of process "<<i+1<<" :";
+		cout<<"Enter execution time of process "<<i<<" :";
 		cin>>process[i];
+		index[i]=i;
 	}
 	
 	for(int i=0;i<maxprocess;i++)
 	{
-		cout<<"\nExecution time of process "<<i+1<<" is :";
-		cout<<process[i];
+		cout<<"\n\nExecution time of process "<<index[i]<<" is :"<<process[i];
+
 	}
 	
-	cout<<"\nArranging the process in ascending order of execution time";
-	for(int i=1;i<maxprocess;i++)
-	{
-	  for( j=0;j<maxprocess;j++)
-	  {
-		if(process[j]>process[j+1])
-		{
-		temp=process[j];
-		process[j]= process[j+1];
-		process[j+1]=temp;
-	    }
-	  }
-	}
-	cout<<"\nAfter arranging";
+	cout<<"\n\nArranging the process in ascending order of execution time";
+	
+	
+     for(i=0;i<maxprocess;i++)
+    {
+        pos=i;
+        for(j=i+1;j<maxprocess;j++)
+        {
+            if(process[j]<process[pos])
+                pos=j;
+        }
+ 
+        temp=process[i];
+        process[i]=process[pos];
+        process[pos]=temp;
+ 
+        temp=index[i];
+        index[i]=index[pos];
+        index[pos]=temp;
+    }
+    
+	cout<<"\n\nAfter arranging";
 	for(int i=0;i<maxprocess;i++)
-	{
-		cout<<"\nExecution time of process "<<i+1<<" is :";
-		cout<<process[i];
+	{   
+		cout<<"\nExecution time of process "<<index[i]<<" is :"<<process[i];
+		
 	}
+	
 }

@@ -1,52 +1,131 @@
-#include<iostream>
+#include<stdio.h>
 #include<conio.h>
-using namespace std;
+#include <windows.h>                        //header file for Sleep()
+
+void a(int a)                               //function to print (....) with execution delay to represent processing
+{
+  if(a==1){
+  	printf(".");
+  }
+  else if(a==2){
+  	printf(".");
+  }
+  else if(a==3){
+  	printf(".");
+  }
+  else if(a==4){
+  	printf(".");
+  }
+  else if(a==5){
+  	printf(".");
+  }
+}
+
 
 int main()
 {
-	int maxprocess,temp,j,i,pos;
+	int maxprocess,temp,j,i,position;
 	int process[50],index[50];
-	cout<<"Enter the total number of process you want to enter :";
-	cin>>maxprocess;
-	for(int i=0;i<maxprocess;i++)
-	{
-		cout<<"Enter execution time of process "<<i<<" :";
-		cin>>process[i];
-		index[i]=i;
+	printf("\t=====> THIS IS PROCESS SCHEDULER OF SHORTEST JOB FIRST=====>");
+	Sleep(1000);
+	printf("\n\nEnter the total number of process you want to enter :");
+	scanf("%d",&maxprocess);
+	Sleep(1000);
+	printf("\nProcess execution time should not exceed 10 units\n");
+	printf("First process starts from 0\n");
+	for(i=0;i<maxprocess;i++)
+	{   
+		printf("Enter execution time of process %d :",i);
+		scanf("%d",&process[i]);                                      //storing ex time of process in process array
+		if(process[i]>10)
+		{
+  		  printf("\nExecution time exceeds base limit ,please re-enter\n");         //if time exceeds limiti then reseting loop variable
+		  i=-1;
+		}
+		else
+		{
+		  index[i]=i;                                                             //else store index of entered process in index array
+		}
+		
 	}
-	
-	for(int i=0;i<maxprocess;i++)
-	{
-		cout<<"\n\nExecution time of process "<<index[i]<<" is :"<<process[i];
-
+	Sleep(1000);                                                                         
+	for(int i=0;i<maxprocess;i++)                                                     //print ex time with index without sorting
+	{                                                                     
+		printf("\nExecution time of process %d is : %d",index[i],process[i]);       
 	}
-	
-	cout<<"\n\nArranging the process in ascending order of execution time";
-	
-	
+	Sleep(1000);
+	printf("\n\nArranging the processes in ascending order of execution time");
      for(i=0;i<maxprocess;i++)
     {
-        pos=i;
-        for(j=i+1;j<maxprocess;j++)
+        position=i;                                                                     
+        for(j=i+1;j<maxprocess;j++)                                            //sorting index array and process array simultaneously
         {
-            if(process[j]<process[pos])
-                pos=j;
+            if(process[j]<process[position])
+                position=j;
         }
  
         temp=process[i];
-        process[i]=process[pos];
-        process[pos]=temp;
+        process[i]=process[position];
+        process[position]=temp;
  
         temp=index[i];
-        index[i]=index[pos];
-        index[pos]=temp;
+        index[i]=index[position];
+        index[position]=temp;
     }
-    
-	cout<<"\n\nAfter arranging";
-	for(int i=0;i<maxprocess;i++)
+    Sleep(1000);
+	printf("\nAfter arranging");
+	Sleep(1000);
+	for(int i=0;i<maxprocess;i++)                            //print ex time with index after sorting
 	{   
-		cout<<"\nExecution time of process "<<index[i]<<" is :"<<process[i];
+		printf("\nExecution time of process %d is : %d",index[i],process[i]);
 		
 	}
-	
+	Sleep(1000);
+	printf("\n\nExecuting processes according to SHORTEST JOB FIRST");
+	for(i=0;i<maxprocess;i++)
+	{
+		printf("\nCPU is ideal for 3 units of time");              
+	    int x=1;
+		for(j=0;j<3;j++)                                              //cpu set ideal for 3 time unit
+		{
+			Sleep(1000);                                      
+			a(x);
+			x++;
+		}
+		printf("\n\nExecuting process %d",index[i]);
+		Sleep(1000);
+		int y=1;
+		for(j=0;j<4;j++)                                               //to represent execution by delay using Sleep()
+		{
+			Sleep(1000);
+			a(y);
+			y++;
+		}
+		printf("\nExecution of process %d SUCCESSFULL",index[i]);
+	}
+	int wait[50];                                                   //wait array to store waiting time
+	int waiting=0;
+   	Sleep(1000);
+	printf("\n\nCalculating average waiting time");
+   	Sleep(1000);
+	for(i=0;i<maxprocess;i++)
+   	{
+   	  	printf("\nWaiting time of process %d is : %d",index[i],waiting);
+	    wait[i]=waiting;
+		waiting=waiting+process[i];                                    //calculate waiting time
+	    
+	}
+	float average=(float)waiting/maxprocess;
+	Sleep(1000);
+	printf("\nAverage waiting time is : %f\n", average);
+	Sleep(1000);
+	printf("\nCalculating Turnaround time");
+	Sleep(1000);
+	int turnaround;
+	for(i=0;i<maxprocess;i++)
+   	{
+   	  	turnaround=wait[i]+process[i];                                            //calculate turnaround time
+   	  	printf("\nTurnaround time of process %d is : %d",index[i],turnaround);
+	}
+   	
 }
